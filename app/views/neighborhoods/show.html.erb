@@ -48,6 +48,44 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_restaurant" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for rest_name -->
+      <div class="form-group">
+        <label for="rest_name" class="control-label">
+          Rest name
+        </label>
+
+        <input type="text" id="rest_name" name="rest_name" placeholder="Rest name" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for nbr_id -->
+      <div class="form-group">
+        <label for="nbr_id" class="control-label">
+          Nbr
+        </label>
+
+        <%= select_tag(:nbr_id, options_from_collection_for_select(Neighborhood.all, :id, :created_at), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Restaurant
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
