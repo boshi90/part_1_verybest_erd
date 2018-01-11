@@ -42,7 +42,7 @@
           Rest
         </label>
 
-        <input type="text" id="rest_id" name="rest_id" placeholder="Rest" class="form-control" value="<%= @bookmark.rest_id %>">
+        <%= select_tag(:rest_id, options_from_collection_for_select(Restaurant.all, :id, :rest_name, @bookmark.rest_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
