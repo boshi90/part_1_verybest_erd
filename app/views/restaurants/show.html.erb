@@ -12,7 +12,13 @@
       <dd><%= @restaurant.address %></dd>
 
       <dt>Nbr</dt>
-      <dd><%= @restaurant.nbr_id %></dd>
+      <dd>
+        <% if @restaurant.nbr.present? %>
+          <a href="/neighborhoods/<%= @restaurant.nbr_id %>">
+            <%= @restaurant.nbr.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
