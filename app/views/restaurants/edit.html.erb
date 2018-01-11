@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @restaurant.errors.any? %>
+  <% @restaurant.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Restaurant #<%= @restaurant.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_restaurant/<%= @restaurant.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for rest_name -->
+      <div class="form-group">
+        <label for="rest_name" class="control-label">
+          Rest name
+        </label>
+
+        <input type="text" id="rest_name" name="rest_name" placeholder="Rest name" class="form-control" value="<%= @restaurant.rest_name %>">
+      </div>
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @restaurant.address %>">
+      </div>
+
+      <!-- Label and input for nbr_id -->
+      <div class="form-group">
+        <label for="nbr_id" class="control-label">
+          Nbr
+        </label>
+
+        <input type="text" id="nbr_id" name="nbr_id" placeholder="Nbr" class="form-control" value="<%= @restaurant.nbr_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Restaurant
+      </button>
+      or
+      <a href="/restaurants/<%= @restaurant.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
